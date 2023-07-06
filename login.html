@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>LOgin page</h1>
+  <input type="text" id="second" placeholder="Email">
+  <input type="password" id="secondpass" placeholder="Password">
+  <button id="login">Submit</button>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCrueC5ZyxvYwTd821Jh2FjZgymb_F8EPQ",
+      authDomain: "signup-61bb8.firebaseapp.com",
+      projectId: "signup-61bb8",
+      storageBucket: "signup-61bb8.appspot.com",
+      messagingSenderId: "1063608895434",
+      appId: "1:1063608895434:web:42bb4bf9bade6326623133"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+
+    document.getElementById("login").addEventListener('click', () => {
+      alert("HELLO")
+      // const auth = getAuth();
+      var email1 = document.getElementById("second").value;
+      var password1 = document.getElementById("secondpass").value;
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          // User is signed in, see docs for a list of available properties
+          // https://firebase.google.com/docs/reference/js/auth.user
+          const uid = user.uid;
+          window.location.href = "./welcome.html"
+
+          // ...
+        } else {
+          // User is signed out
+          // ...
+        }
+      });
+    })
+  </script>
+</body>
+
+</html>
